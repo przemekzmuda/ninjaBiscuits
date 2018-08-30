@@ -1,0 +1,51 @@
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+
+using namespace std;
+
+void sortowanie(int *tab, int ile);
+int i_liczb;
+clock_t start,stop, czas;
+
+int main()
+{
+    srand(time(NULL));
+    cout<<"Podaj ilosc liczb: "<<endl;
+    cin>>i_liczb;
+    int *tab_g;
+    tab_g = new int (i_liczb);
+    for(int i=0; i<i_liczb; i++)
+    {
+        tab_g[i]=rand()%99+1;
+        //cout<<tab01[i]<<endl;
+    }
+    cout<<"Czas rozpoczac sortowanie!"<<endl;
+    start=clock();
+    sortowanie(tab_g,i_liczb);
+    stop=clock();
+    czas=(stop-start)/CLOCKS_PER_SEC;
+
+    //for(int i=0; i<i_liczb; i++)
+    //    cout<<tab_g[i]<<endl;
+    cout<<"Zajelo to: "<<czas<<" s"<<endl;
+    delete[]tab_g;
+    return 0;
+}
+
+void sortowanie(int *tab, int ile)
+{
+    for (int j=1; j<ile; j++) //petla ILE RAZY TRZEBA PRZESTAWIAC ELEMENTY
+    {
+        for(int k=ile-1; k>=1; k--) //petla KTORE ELEMENTY ZAMIENIC
+        {
+            if (tab[k]<tab[k-1])
+            {
+                int bufor;
+                bufor=tab[k];
+                tab[k]=tab[k-1];
+                tab[k-1]=bufor;
+            }
+        }
+    }
+}
