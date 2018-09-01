@@ -1,0 +1,87 @@
+/*#include<iostream>
+#include<cstdlib>
+using namespace std;
+int main()
+{
+    int a,b,i_partii,suma;
+    cout<<"Podaj liczbe partii: "<<endl;
+    cin>>i_partii;
+    while (i_partii<1 || i_partii>10)
+    {
+        cout<<"Podaj liczbe z zakresu od 1 do 10!"<<endl;
+        cout<<"Podaj liczbe ponownie: "<<endl;
+        cin>>i_partii;
+    }
+    for (int i=0; i<i_partii; i++)
+    {
+        cout<<"Podaj ilosc zetonow dla gracza nr 1: "<<endl;
+        cin>>a;
+        cout<<"Podaj ilosc zetonow dla gracza nr 2: "<<endl;
+        cin>>b;
+        while(a==0 || b==0)
+        {
+            cout<<"Liczba musi byc rozna od 0!"<<endl;
+            cout<<"Podaj ponownie a: "<<endl;
+            cin>>a;
+            cout<<"Podaj ponownie b: "<<endl;
+            cin>>b;
+        }
+        while(a!=b && a>0 && b>0)
+        {
+            if(a<b)
+            {
+                b=b-a;
+                cout<<"liczba zetonow gracza numer 2 wynosi: "<<b<<endl;
+            }
+            else if (b<a)
+            {
+                a=a-b;
+                cout<<"liczba zetonow gracza numer 1 wynosi: "<<a<<endl;
+            }
+        }
+        if(a=b)
+        {
+            cout<<"Gra skonczona. Nikt nie moze wykonac ruchu!"<<endl;
+        }
+        suma=a+b;
+        cout<<"W grze w chwili zakonczenia zostalo: "<<suma<<" zetonow!"<<endl;
+    }
+    return 0;
+}
+*/
+
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+int main()
+{
+    int a,b,i_partii,suma[10];
+    cin>>i_partii;
+    cout<<endl;
+    while (i_partii<1 || i_partii>10)
+        cin>>i_partii;
+    for (int i=0; i<i_partii; i++)
+    {
+        cin>>a>>b;
+        while(a==0 || b==0)
+        {
+            cin>>a>>b;
+        }
+        while(a!=b && a>0 && b>0)
+        {
+            if(a<b)
+            {
+                b=b-a;
+            }
+            else if (b<a)
+            {
+                a=a-b;
+            }
+        }
+        suma[i]=a+b;
+    }
+        for (int j=0;j<=i_partii-1;j++)
+        cout<<suma[j]<<endl;
+        return 0;
+
+}
