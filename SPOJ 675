@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int b=0,N=0,kroki_w=0,kroki_z=0,kroki_pnc=0,kroki_pld=0,wynik1=0,wynik2=0,l_test;
+    int wybor;
+    int a[3];
+    a[0]=0;
+    a[1]=1;
+    a[2]=2;
+    a[3]=3;
+    cin>>l_test;
+    if(l_test>0 && l_test<=50)
+    for (int i=0;i<l_test;i++)
+    {
+        cin>>N;
+        if(N>=0 && N<=100000)
+        for (int i=0; i<N; i++)
+    {
+
+        wybor=0;
+        b=0;
+        //cout<<"Wybierz odpowiednia liczbe: "<<endl;
+        cin>>wybor;
+        switch (wybor)
+        {
+        case 0:
+        {
+            //cout<<"Wybrales kierunek: "<<tab_kierunki[0]<<endl;
+            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+            cin>>b;
+            if (b>=1 && b<=10000)
+            kroki_w=b+kroki_w;
+        }
+        break;
+        case 1:
+        {
+            //cout<<"Wybrales kierunek: "<<tab_kierunki[1]<<endl;
+            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+            cin>>b;
+            if (b>=1 && b<=10000)
+            kroki_z=b+kroki_z;
+        }
+        break;
+        case 2:
+        {
+            //cout<<"Wybrales kierunek: "<<tab_kierunki[2]<<endl;
+            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+            cin>>b;
+            if (b>=1 && b<=10000)
+            kroki_pnc=b+kroki_pnc;
+        }
+        break;
+        case 3:
+        {
+            //cout<<"Wybrales kierunek: "<<tab_kierunki[3]<<endl;
+            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+            cin>>b;
+            if (b>=1 && b<=10000)
+            kroki_pld=b+kroki_pld;
+        }
+        break;
+
+        }
+
+    }
+    }
+    if (kroki_pnc<kroki_pld)
+    {
+        wynik2=kroki_pld-kroki_pnc;
+        cout<</*"Polozenie skarbu wymaga przejscia "*/a[3]<<" "<<wynik2<</*" krokow na poludnie!"*/endl;
+    }
+    else if (kroki_pnc>kroki_pld)
+    {
+        wynik2=kroki_pnc-kroki_pld;
+        cout<</*"Polozenie skarbu wymaga przejscia "*/a[2]<<" "<<wynik2<</*" krokow na polnoc!"<<*/endl;
+    }
+    else
+        cout<<"studnia"<<endl;
+
+    if (kroki_w<kroki_z)
+    {
+        wynik1=kroki_z-kroki_w;
+        cout<</*"Polozenie skarbu wymaga przejscia "<<*/a[1]<<" "<<wynik1/*<<" krokow na zachod!"<<*/<<endl;
+    }
+    else if (kroki_w>kroki_z)
+    {
+        wynik1=kroki_w-kroki_z;
+        cout<</*"Polozenie skarbu wymaga przejscia "*/a[0]<<" "<<wynik1<</*" krokow na wschod!"<<endl;*/endl;
+    }
+    else
+        cout<<"studnia"<<endl;
+
+    return 0;
+
+}
