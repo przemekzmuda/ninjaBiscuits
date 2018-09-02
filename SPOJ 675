@@ -2,94 +2,116 @@
 using namespace std;
 int main()
 {
-    int b=0,N=0,kroki_w=0,kroki_z=0,kroki_pnc=0,kroki_pld=0,wynik1=0,wynik2=0,l_test;
+    int N=0,kroki_w=0,kroki_z=0,kroki_pnc=0,kroki_pld=0,wynik1[10000],wynik2[10000],D=0;
     int wybor;
     int a[3];
-    a[0]=0;
-    a[1]=1;
-    a[2]=2;
-    a[3]=3;
-    cin>>l_test;
-    if(l_test>0 && l_test<=50)
-    for (int i=0;i<l_test;i++)
+    a[0]=0; //polnoc
+    a[1]=1; //poludnie
+    a[2]=2; //zachod
+    a[3]=3; //wschod
+    //cout<<"Podaj ilosc testow: "<<endl;
+    cin>>D;
+    while(D<=0 || D>50)
     {
+        //cout<<"Bledna liczba. Sprobuj ponownie. "<<endl;
+        cin>>D;
+    }
+
+    for (int i=0; i<D; i++)//START PETLI Z ILOSCIA ZESTAWOW
+    {
+        //cout<<"Podaj liczbe wskazowek: "<<endl;
         cin>>N;
-        if(N>=0 && N<=100000)
-        for (int i=0; i<N; i++)
-    {
+        while(N<0 || N>100000)
+        {
+            //cout<<"Bledna liczba. Sprobuj ponownie. "<<endl;
+            cin>>N;
+        }
+        kroki_pld=0;
+        kroki_pnc=0;
+        kroki_w=0;
+        kroki_z=0;
 
-        wybor=0;
-        b=0;
-        //cout<<"Wybierz odpowiednia liczbe: "<<endl;
-        cin>>wybor;
-        switch (wybor)
+        for (int j=1; j<=N; j++)
         {
-        case 0:
-        {
-            //cout<<"Wybrales kierunek: "<<tab_kierunki[0]<<endl;
-            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
-            cin>>b;
-            if (b>=1 && b<=10000)
-            kroki_w=b+kroki_w;
+            //cout<<"Wybierz odpowiednia liczbe: "<<endl;
+            cin>>wybor;
+            int b1=0,b2=0,b3=0,b4=0;
+            switch (wybor)
+            {
+            case 3:
+            {
+                //cout<<"Wybrales kierunek: "<<tab_kierunki[0]<<endl;
+                //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+                //while (b<1 || b>10000)
+                    cin>>b1;
+                //if(b>1 && b<=10000)
+                    kroki_w=b1+kroki_w;
+            }
+            break;
+            case 2:
+            {
+                //cout<<"Wybrales kierunek: "<<tab_kierunki[1]<<endl;
+                //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+                //while (b<1 || b>10000)
+                    cin>>b2;
+                //if (b>=1 && b<=10000)
+                    kroki_z=b2+kroki_z;
+            }
+            break;
+            case 0:
+            {
+                //cout<<"Wybrales kierunek: "<<tab_kierunki[2]<<endl;
+                //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+                //while (b<1 || b>10000)
+                    cin>>b3;
+                //if (b>=1 && b<=10000)
+                    kroki_pnc=b3+kroki_pnc;
+            }
+            break;
+            case 1:
+            {
+                //cout<<"Wybrales kierunek: "<<tab_kierunki[3]<<endl;
+                //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
+                //while (b<1 || b>10000)
+                    cin>>b4;
+                //if (b>=1 && b<=10000)
+                    kroki_pld=b4+kroki_pld;
+            }
+            break;
+            } //KONIEC SWITCH
         }
-        break;
-        case 1:
+if ((kroki_w==kroki_z) && (kroki_pld==kroki_pnc))
         {
-            //cout<<"Wybrales kierunek: "<<tab_kierunki[1]<<endl;
-            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
-            cin>>b;
-            if (b>=1 && b<=10000)
-            kroki_z=b+kroki_z;
+            cout<<"studnia"<<endl;
         }
-        break;
-        case 2:
+        if (kroki_pld>kroki_pnc)
         {
-            //cout<<"Wybrales kierunek: "<<tab_kierunki[2]<<endl;
-            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
-            cin>>b;
-            if (b>=1 && b<=10000)
-            kroki_pnc=b+kroki_pnc;
+            wynik1[i]=kroki_pld-kroki_pnc;
+            cout<<a[1]<<" "<<wynik1[i]<<endl;
         }
-        break;
-        case 3:
+        else if (kroki_pld<kroki_pnc)
         {
-            //cout<<"Wybrales kierunek: "<<tab_kierunki[3]<<endl;
-            //cout<<"Podaj ilosc krokow w wybranym kierunku: ";
-            cin>>b;
-            if (b>=1 && b<=10000)
-            kroki_pld=b+kroki_pld;
+            wynik1[i]=kroki_pnc-kroki_pld;
+            cout<<a[0]<<" "<<wynik1[i]<<endl;
         }
-        break;
 
+        if (kroki_w>kroki_z)
+        {
+            wynik2[i]=kroki_w-kroki_z;
+            cout<<a[3]<<" "<<wynik2[i]<<endl;
         }
+        else if (kroki_w<kroki_z)
+        {
+            wynik2[i]=kroki_z-kroki_w;
+            cout<<a[2]<<" "<<wynik2[i]<<endl;
+        }
+//cout<<"poludnie "<<kroki_pld<<endl;
+//cout<<"polnoc "<<kroki_pnc<<endl;
+//cout<<"wschod "<<kroki_w<<endl;
+//cout<<"zachod "<<kroki_z<<endl;
 
-    }
-    }
-    if (kroki_pnc<kroki_pld)
-    {
-        wynik2=kroki_pld-kroki_pnc;
-        cout<</*"Polozenie skarbu wymaga przejscia "*/a[3]<<" "<<wynik2<</*" krokow na poludnie!"*/endl;
-    }
-    else if (kroki_pnc>kroki_pld)
-    {
-        wynik2=kroki_pnc-kroki_pld;
-        cout<</*"Polozenie skarbu wymaga przejscia "*/a[2]<<" "<<wynik2<</*" krokow na polnoc!"<<*/endl;
-    }
-    else
-        cout<<"studnia"<<endl;
 
-    if (kroki_w<kroki_z)
-    {
-        wynik1=kroki_z-kroki_w;
-        cout<</*"Polozenie skarbu wymaga przejscia "<<*/a[1]<<" "<<wynik1/*<<" krokow na zachod!"<<*/<<endl;
-    }
-    else if (kroki_w>kroki_z)
-    {
-        wynik1=kroki_w-kroki_z;
-        cout<</*"Polozenie skarbu wymaga przejscia "*/a[0]<<" "<<wynik1<</*" krokow na wschod!"<<endl;*/endl;
-    }
-    else
-        cout<<"studnia"<<endl;
+    } //KONIEC PETLI DLA ILOSCI TESTOW
 
     return 0;
 
